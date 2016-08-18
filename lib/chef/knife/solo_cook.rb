@@ -267,7 +267,7 @@ class Chef
           ssh_command = "ssh #{ssh_args}"
         end
 
-        cmd = ['rsync', '-rL', rsync_debug, rsync_permissions, %Q{--rsh=#{ssh_command}}]
+        cmd = ['rsync', '-rL', rsync_debug, rsync_permissions, %Q{--rsh="#{ssh_command}"}]
         cmd += extra_opts
         cmd += rsync_excludes.map { |ignore| "--exclude=#{ignore}" }
         cmd += [ adjust_rsync_path_on_client(source_path),
